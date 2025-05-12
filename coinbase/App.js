@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './src/Home.js';
 import EmailAdress from './src/EmailAdress';
 import AddSenha from './src/AddSenha';
+import Dados from './src/Dados';
 
 const Stack = createStackNavigator();
 
@@ -29,6 +30,9 @@ export default function App() {
         options={{
           title: 'Voltar',
         }}
+        />
+        <Stack.Screen name="Dados"
+        component={Dados}
         />
       </Stack.Navigator>
     </NavigationContainer>
