@@ -17,7 +17,7 @@ export default function WelcomeScreen() {
             {/* Parte branca inferior */}
             <View style={styles.bottomSection}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.welcomeText}>Bem vindo ao CoinBase</Text>
+                    <Text style={styles.welcomeText}>Bem vindo ao CoinPd</Text>
                     <Text style={styles.subtitle}>Aplicativo para regular suas finanças</Text>
                 </View>
 
