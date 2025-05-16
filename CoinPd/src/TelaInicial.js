@@ -1,12 +1,14 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
-import Datas from './Datas';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { MaterialIcons, Feather } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
+import Datas from './Datas';
 
 export default function TelaInicial({ route, navigation }) {
     const { nome } = route.params || {};
     const { sobrenome } = route.params || {};
+    const routeAtual = useRoute().name;
 
     return (
         <View style={{ flex: 1 }}>
@@ -39,33 +41,34 @@ export default function TelaInicial({ route, navigation }) {
                 </View>
             </View>
 
-            
-            <View style={styles.footer}>
-                <TouchableOpacity style={styles.footerButton} onPress={() => navigation.navigate('TelaInicial')}>
-                    <View style={styles.footerIconContainer}>
-                        <MaterialIcons name="home" size={24} color="#2563eb" />
-                        <Text style={styles.footerLabel}>Início</Text>
-                    </View>
+            {/* Barra de navegação inferior */}
+            <View style={styles.bottomNav}>
+                <TouchableOpacity style={styles.navButton}>
+                    <MaterialIcons name="home" size={24} color="#4F8EF7" />
+                    <Text style={styles.navText}>Início</Text>
                 </TouchableOpacity>
-
-                <TouchableOpacity style={styles.footerButton} onPress={() => navigation.navigate('Datas')}>
-                    <View style={styles.footerIconContainer}>
-                        <MaterialIcons name="calendar-today" size={24} color="#94a3b8" />
-                        <Text style={styles.footerLabel}>Histórico</Text>
-                    </View>
+                
+                <TouchableOpacity 
+                    style={styles.navButton}
+                    onPress={() => navigation.navigate('Datas')}
+                >
+                    <MaterialIcons
+                        name='calendar-today'
+                        size={24}
+                        color={routeAtual === 'Datas' ? '#4F8EF7' : '#777'}
+                    />
+                    <Text style={[ styles.navText, { color: routeAtual === 'Datas' ? '#4F8Ef7': '#777'}]}>Histórico</Text>
                 </TouchableOpacity>
             </View>
         </View>
     );
 }
 
-
 const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#fff',
         padding: 20,
-        
     },
     greeting: {
         fontSize: 18,
@@ -140,42 +143,21 @@ const styles = StyleSheet.create({
         color: '#000',
         marginTop: 5,
     },
-    footerIcon: {
-        fontSize: 24,
-    },
-    footer: {
-        position: 'absolute',
-        bottom: 20,
-        left: 20,
-        right: 20,
+    bottomNav: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 10,
         backgroundColor: '#fff',
-        borderRadius: 20,
-        elevation: 5, // para Android
-        shadowColor: '#000', // para iOS
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-    },
-    footerButton: {
-        alignItems: 'center',
-        justifyContent: 'center',},
-        footerIconContainer: {
-        backgroundColor: '#e0e7ff',
-        paddingHorizontal: 16,
+        borderTopWidth: 1,
+        borderColor: '#ddd',
         paddingVertical: 10,
-        borderRadius: 15,
-        flexDirection: 'row',
+    },
+    navButton: {
         alignItems: 'center',
     },
-    footerLabel: {
-        color: '#2563eb',
-        fontSize: 16,
-        marginLeft: 8,
-        fontWeight: '500',
+    navText: {
+        fontSize: 12,
+        color: '#4F8EF7',
+        marginTop: 2,
     },
-
 });

@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, FlatList } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialIcons, Feather } from '@expo/vector-icons';
+import { useRoute } from '@react-navigation/native';
 
 const Datas = ({ navigation }) => {
     const [selectedMonth, setSelectedMonth] = useState('Fevereiro');
+
+    const routeAtual = useRoute().name;
 
     const data = [
         { id: '1', title: 'Lanche no ifood', description: 'Veja os dados do gasto' },
@@ -42,21 +45,32 @@ const Datas = ({ navigation }) => {
                 contentContainerStyle={styles.list}
             />
 
-            <View style={styles.footer}>
-                <TouchableOpacity style={styles.footerButton} onPress={() => navigation.navigate('TelaInicial')}>
-                    <View style={styles.footerIconContainer}>
-                        <MaterialIcons name="home" size={24} color="#2563eb" />
-                        <Text style={styles.footerLabel}>Início</Text> 
-                    </View>
+            <View style={styles.bottomNav}>
+                <TouchableOpacity 
+                    style={styles.navButton}
+                    onPress={() => navigation.navigate('TelaInicial')}
+                    >
+                    <MaterialIcons 
+                    name="home" 
+                    size={24} 
+                    color={routeAtual === 'TelaInicial' ? '#4F8EF7' : '#777'}
+                    />
+                    <Text style={[styles.navText, { color: routeAtual === 'TelaInicial' ? '#48EF7' : '#777'}]}>Início</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={styles.footerButton} onPress={() => navigation.navigate('Datas')}>
-                    <View style={styles.footerIconContainer}>
-                        <MaterialIcons name="calendar-today" size={24} color="#94a3b8" />
-                        <Text style={styles.footerLabel}>Histórico</Text>
-                    </View>
+                <TouchableOpacity 
+                    style={styles.navButton}
+                >
+                    <MaterialIcons
+                        name='calendar-today'
+                        size={24}
+                        color={routeAtual === 'Datas' ? '#4F8EF7' : '#777'}
+                    />
+                    <Text style={[ styles.navText, { color: routeAtual === 'Datas' ? '#4F8EF7': '#777'}]}>Histórico</Text>
                 </TouchableOpacity>
             </View>
+
+
         </View>
 
 
@@ -114,47 +128,24 @@ const styles = StyleSheet.create({
         color: '#4F63AC',
         fontWeight: 'bold',
     },
-    footer: {
-        position: 'absolute',
-        bottom: 20,
-        left: 20,
-        right: 20,
+    bottomNav: {
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
-        paddingVertical: 10,
         backgroundColor: '#fff',
-        borderRadius: 20,
-        elevation: 5, // para Android
-        shadowColor: '#000', // para iOS
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 5,
-    },
-    iconButton: {
-        alignItems: 'center',
-    },
-    iconText: {
-        fontSize: 24,
-    },
-    footerButton: {
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-    footerIconContainer: {
-        backgroundColor: '#e0e7ff',
-        paddingHorizontal: 16,
+        borderTopWidth: 1,
+        borderColor: '#ddd',
         paddingVertical: 10,
-        borderRadius: 15,
-        flexDirection: 'row',
+    },
+    navButton: {
         alignItems: 'center',
     },
-    footerLabel: {
-        color: '#2563eb',
-        fontSize: 16,
-        marginLeft: 8,
-        fontWeight: '500',
+    navText: {
+        fontSize: 12,
+        color: '#4F8EF7',
+        marginTop: 2,
     },
+    
 });
 
 export default Datas;
