@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { MaterialIcons, Feather } from '@expo/vector-icons';
+import { MaterialIcons  } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
 
 import Datas from './Datas';
+import AdicionarGasto from './AdicionarGasto';
 
 export default function TelaInicial({ route, navigation }) {
     const { nome } = route.params || {};
@@ -27,7 +28,10 @@ export default function TelaInicial({ route, navigation }) {
                     </View>
                 </View>
 
-                <TouchableOpacity style={styles.addButton}>
+                <TouchableOpacity 
+                    style={styles.addButton}
+                    onPress={() => navigation.navigate('AdicionarGasto')}
+                    >
                     <Text style={styles.addButtonText}>Add Gasto</Text>
                 </TouchableOpacity>
 
@@ -47,7 +51,7 @@ export default function TelaInicial({ route, navigation }) {
                     <MaterialIcons name="home" size={24} color="#4F8EF7" />
                     <Text style={styles.navText}>Início</Text>
                 </TouchableOpacity>
-                
+
                 <TouchableOpacity 
                     style={styles.navButton}
                     onPress={() => navigation.navigate('Datas')}

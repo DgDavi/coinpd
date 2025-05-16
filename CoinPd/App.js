@@ -8,6 +8,8 @@ import AddSenha from './src/AddSenha';
 import NomeSobrenome from './src/NomeSobrenome.js';
 import TelaInicial from './src/TelaInicial.js';
 import Datas from './src/Datas.js';
+import AdicionarGasto from './src/AdicionarGasto.js';
+import DetalhesDoGasto from './src/DetalhesDoGasto.js';
 
 const Stack = createStackNavigator();
 
@@ -41,6 +43,12 @@ export default function App() {
         />
         <Stack.Screen name="Datas"
         component={Datas}
+        />
+        <Stack.Screen name="AdicionarGasto"
+        component={AdicionarGasto}
+        />
+        <Stack.Screen name="DetalhesDoGasto"
+        component={DetalhesDoGasto}
         />
       </Stack.Navigator>
     </NavigationContainer>
