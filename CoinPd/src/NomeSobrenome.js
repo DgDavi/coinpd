@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import TelaInicial from './TelaInicial';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
-export default function EmailAdress() {
-  const [email, setEmail] = useState('');
+import Datas from './Datas';
+
+
+
+export default function NomeSobrenome() {
+  const [nome, setNome] = useState('');
+  const [sobrenome, setSobrenome] = useState('');
 
 const navigation = useNavigation();
 
@@ -14,34 +21,34 @@ return (
     >
         <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
-        {/* Ícone ou símbolo de email */}
+        {/* Ícone de identidade usando react-native-vector-icons */}
+
         <View style={styles.iconCircle}>
-            <Text style={styles.atSymbol}>@</Text>
+          <Icon name="person" size={28} color="#999" />
         </View>
 
         {/* Título e subtítulo */}
         <Text style={styles.title}>Insira seus dados.</Text>
-        <Text style={styles.subtitle}>Digite seu nome abaixo.</Text>
+        <Text style={styles.subtitle}>Digite seu nome e sobrenome abaixo.</Text>
 
         {/* Input de nome */}
         <TextInput
             style={styles.input}
-            placeholder="Insira seu nome"
-            value={email}
-            onChangeText={setEmail}
+            placeholder="Nome"
+            value={nome}
+            onChangeText={setNome}
             keyboardType="nome-adress"
             autoCapitalize="none"
             autoCorrect={false}
         />
 
-        <Text style={styles.subtitle}>Digite seu nome abaixo.</Text>
 
         {/* Input de sobrenome */}
          <TextInput
             style={styles.input}
-            placeholder="Insira seu sobrenome"
-            value={email}
-            onChangeText={setEmail}
+            placeholder="Sobrenome"
+            value={sobrenome}
+            onChangeText={setSobrenome}
             keyboardType="sobrenome-adress"
             autoCapitalize="none"
             autoCorrect={false}
@@ -49,7 +56,9 @@ return (
 
         {/* Botão continuar */}
         <TouchableOpacity 
-        style={styles.button}>
+          style={styles.button}
+            onPress={() => navigation.navigate('TelaInicial', {nome, sobrenome})}
+        >
             <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
     </KeyboardAvoidingView>

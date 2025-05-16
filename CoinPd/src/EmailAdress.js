@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import AddSenha from './AddSenha';
 import { useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function EmailAdress() {
   const [email, setEmail] = useState('');
@@ -15,9 +16,9 @@ return (
     >
         <StatusBar barStyle="dark-content" backgroundColor="#ffffff" />
 
-        {/* Ícone ou símbolo de email */}
+        {/* Ícone de email usando react-native-vector-icons */}
         <View style={styles.iconCircle}>
-            <Text style={styles.atSymbol}>@</Text>
+          <Icon name="email-outline" size={28} color="#999" />
         </View>
 
         {/* Título e subtítulo */}

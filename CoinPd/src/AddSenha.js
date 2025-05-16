@@ -12,7 +12,8 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import Dados from './Dados';
+import NomeSobrenome from './NomeSobrenome';
+
 
 export default function AddSenha() {
   const [password, setPassword] = useState('');
@@ -61,7 +62,7 @@ export default function AddSenha() {
       <View style={styles.fixedButtonContainer}>
         <TouchableOpacity 
         style={styles.button}
-        onPress={() => navigation.navigate('Dados')}
+        onPress={() => navigation.navigate('NomeSobrenome')}
         >
           <Text style={styles.buttonText}>Continue</Text>
         </TouchableOpacity>
