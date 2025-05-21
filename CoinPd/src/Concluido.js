@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView } from 'react-na
 import { Ionicons } from '@expo/vector-icons';
 
 export default function Concluido({ navigation, route }) {
-    const { nomeGasto, valor, data } = route.params || {};
+    const { valor, data } = route.params || {};
 
     return (
         <SafeAreaView style={styles.container}>
@@ -13,7 +13,7 @@ export default function Concluido({ navigation, route }) {
                 </View>
                 <Text style={styles.title}>Concluído</Text>
                 <Text style={styles.amount}>R${valor}</Text>
-                <Text style={styles.subtitle}>{nomeGasto} compra realizada na data de {data}</Text>
+                <Text style={styles.subtitle}>Compra realizada na data de {data}</Text>
             </View>
             <View style={styles.footer}>
                 <TouchableOpacity
