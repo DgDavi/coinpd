@@ -10,6 +10,7 @@ import TelaInicial from './src/TelaInicial.js';
 import Datas from './src/Datas.js';
 import AdicionarGasto from './src/AdicionarGasto.js';
 import DetalhesDoGasto from './src/DetalhesDoGasto.js';
+import Concluido from './src/Concluido.js';
 
 const Stack = createStackNavigator();
 
@@ -40,15 +41,33 @@ export default function App() {
         />
         <Stack.Screen name="TelaInicial"
         component={TelaInicial}
+        options={{
+          title: 'Voltar',
+        }}
         />
         <Stack.Screen name="Datas"
         component={Datas}
+        options={{
+          title: 'Voltar',
+        }}
         />
         <Stack.Screen name="AdicionarGasto"
         component={AdicionarGasto}
+        options={{
+          title: 'Voltar',
+        }}
         />
         <Stack.Screen name="DetalhesDoGasto"
         component={DetalhesDoGasto}
+        options={{
+          title: 'Voltar',
+        }}  
+        />
+        <Stack.Screen name="Concluido"  
+        component={Concluido}
+        options={{
+          title: 'Voltar',
+        }}
         />
       </Stack.Navigator>
     </NavigationContainer>

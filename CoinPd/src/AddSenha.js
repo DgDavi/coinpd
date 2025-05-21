@@ -12,7 +12,7 @@ import {
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import NomeSobrenome from './NomeSobrenome';
+
 
 
 export default function AddSenha() {
@@ -38,6 +38,20 @@ export default function AddSenha() {
           <TextInput
             style={styles.input}
             placeholder="Senha"
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry={!showPassword}
+          />
+          <TouchableOpacity onPress={() => setShowPassword(!showPassword)} style={styles.eyeIcon}>
+            <Ionicons name={showPassword ? 'eye-off' : 'eye'} size={20} color="#666" />
+          </TouchableOpacity>
+        </View>
+
+        {/* Campo de senha */}
+        <View style={styles.passwordInputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Confirme sua senha"
             value={password}
             onChangeText={setPassword}
             secureTextEntry={!showPassword}

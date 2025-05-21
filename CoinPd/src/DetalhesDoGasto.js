@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, TextInput, TouchableOpacity, ScrollView } from 
 import { Picker } from '@react-native-picker/picker';
 import { useRoute } from '@react-navigation/native';
 
-export default function DetailsOperation() {
+export default function DetailsOperation({ navigation }) {
   const [cartaoSelecionado, setCartaoSelecionado] = useState('');
   const [tipoGasto, setTipoGasto] = useState('');
   const [tipoGastoOutro, setTipoGastoOutro] = useState('');
@@ -52,12 +52,10 @@ export default function DetailsOperation() {
           />
         </View>
 
-
         {/* Tipo de Gasto */}
         <View style={styles.field}>
           <Text style={styles.label}>Tipo de Gasto</Text>
           <View style={styles.pickerWrapper}>
-
             {/* Ta feio mesmo e eu não seu estilizar */}
             <Picker
               selectedValue={tipoGasto}
@@ -65,11 +63,11 @@ export default function DetailsOperation() {
               style={styles.picker}
             >
               <Picker.Item label="Selecione um tipo" value="" />
-              <Picker.Item label="Casa"       value="Casa" />
-              <Picker.Item label="Lazer"      value="Lazer" />
+              <Picker.Item label="Casa" value="Casa" />
+              <Picker.Item label="Lazer" value="Lazer" />
               <Picker.Item label="Transporte" value="Transporte" />
-              <Picker.Item label="Comida"     value="Comida" />
-              <Picker.Item label="Outro"      value="Outro" />
+              <Picker.Item label="Comida" value="Comida" />
+              <Picker.Item label="Outro" value="Outro" />
             </Picker>
           </View>
         </View>
@@ -86,8 +84,6 @@ export default function DetailsOperation() {
           </View>
         )}
 
-
-
         {/* Data */}
         <View style={styles.field}>
           <Text style={styles.label}>Data</Text>
@@ -103,7 +99,10 @@ export default function DetailsOperation() {
       </ScrollView>
 
       {/* Botão */}
-      <TouchableOpacity style={styles.button}>
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Concluido', { nomeGasto, tipoGasto, tipoGastoOutro, data, valor })}
+      >
         <Text style={styles.buttonText}>Enviar</Text>
       </TouchableOpacity>
     </View>

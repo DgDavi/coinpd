@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, StatusBar } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import TelaInicial from './TelaInicial';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
-import Datas from './Datas';
 
 
 

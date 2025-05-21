@@ -1,12 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { MaterialIcons  } from '@expo/vector-icons';
 import { useRoute } from '@react-navigation/native';
 
-import Datas from './Datas';
-import AdicionarGasto from './AdicionarGasto';
-
-const logo = require('./assets/logo.png');
 
 export default function TelaInicial({ route, navigation }) {
     const { nome } = route.params || {};
@@ -21,9 +17,6 @@ export default function TelaInicial({ route, navigation }) {
                     {nome} {sobrenome}
                 </Text>
 
-                {/* Substitua a View azul pela imagem */}
-                <Image source={logo} style={styles.logo} resizeMode="contain" />
-
                 <View style={styles.card}>
                     <Text style={styles.cardTitle}>Gastos da semana</Text>
                     <Text style={styles.cardSubtitle}>Último gasto há 2hrs</Text>
@@ -33,11 +26,11 @@ export default function TelaInicial({ route, navigation }) {
                     </View>
                 </View>
 
-                <TouchableOpacity
+                <TouchableOpacity 
                     style={styles.addButton}
                     onPress={() => navigation.navigate('AdicionarGasto')}
-                >
-                    <Text style={styles.addButtonText}>Add Gasto</Text>
+                    >
+                    <Text style={styles.addButtonText}>Adicionar Gasto</Text>
                 </TouchableOpacity>
 
                 <Text style={styles.recentTitle}>Gastos Recentes:</Text>
@@ -57,7 +50,7 @@ export default function TelaInicial({ route, navigation }) {
                     <Text style={styles.navText}>Início</Text>
                 </TouchableOpacity>
 
-                <TouchableOpacity
+                <TouchableOpacity 
                     style={styles.navButton}
                     onPress={() => navigation.navigate('Datas')}
                 >
@@ -66,7 +59,7 @@ export default function TelaInicial({ route, navigation }) {
                         size={24}
                         color={routeAtual === 'Datas' ? '#4F8EF7' : '#777'}
                     />
-                    <Text style={[styles.navText, { color: routeAtual === 'Datas' ? '#4F8Ef7' : '#777' }]}>Histórico</Text>
+                    <Text style={[ styles.navText, { color: routeAtual === 'Datas' ? '#4F8Ef7': '#777'}]}>Histórico</Text>
                 </TouchableOpacity>
             </View>
         </View>
@@ -87,13 +80,6 @@ const styles = StyleSheet.create({
         fontSize: 24,
         fontWeight: 'bold',
         color: '#000',
-    },
-
-    logo: {
-        width: 200,
-        height: 100,
-        marginTop: 20,
-        alignSelf: 'center',
     },
     card: {
         backgroundColor: '#4F8EF7',

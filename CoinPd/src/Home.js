@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Bu } from 'react-native';
+import { View, Text, StyleSheet, StatusBar, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 export default function Home() {
@@ -11,7 +11,10 @@ export default function Home() {
 
             {/* Parte azul superior */}
             <View style={styles.topSection}>
-
+              <Image
+                source={require('../assets/logo.png')}
+                style={{ width: '100%', height: '100%', resizeMode: 'contain' }}
+              />
             </View>
 
             {/* Parte branca inferior */}
